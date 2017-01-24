@@ -123,11 +123,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
     private boolean checkStoragePermission() {
         int result = ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            return false;
-        }
+        return result == PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestStoragePermission() {
@@ -243,7 +239,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             String path = Environment.getExternalStorageDirectory().toString() + File.separator + "FaceRecognition";
             String IamgeName = "full_image_" + System.currentTimeMillis()  +".jpg" ;
             saveBitmapToJpg(bitmap ,  path  , IamgeName);
-            bitmap = null;
             Toast.makeText( getApplicationContext(),  "Image Taken Ok" ,Toast.LENGTH_SHORT). show();
             new MyAsyncTask().execute(path +  File.separator +  IamgeName , path +  File.separator + "faceDatabase");
         }
@@ -468,7 +463,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
             }
             mOverlay.add(mFaceGraphic);
             mFaceGraphic.updateFace(face);
-            
+
         }
 
         /**
