@@ -72,7 +72,7 @@ public final class FaceTrackerActivity extends AppCompatActivity {
     private static final int RC_HANDLE_GMS = 9001;
     // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
-
+    private  long lastImageTakenTime = 0;
 
     //==============================================================================================
     // Activity Methods
@@ -209,7 +209,8 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
     public  void saveCurrentImage(){
         if(mCameraSource != null){
-                mCameraSource.takePicture(null, mPicture);
+            lastImageTakenTime = System.currentTimeMillis();
+            mCameraSource.takePicture(null, mPicture);
         }
     }
 
@@ -455,16 +456,19 @@ public final class FaceTrackerActivity extends AppCompatActivity {
          */
         @Override
         public void onUpdate(FaceDetector.Detections<Face> detectionResults, Face face) {
-            boolean isSmiling = face.getIsSmilingProbability() > 0.4;
-            if (isSmiling) {
+            boolean isSmiling = face.getIsSmilingProbability() > 0.35;
+            boolean oneShotOnly =   System.currentTimeMillis() - lastImageTakenTime > 2000 ;
+            if (isSmiling && oneShotOnly) {
                 float leftEye = face.getIsLeftEyeOpenProbability();
                 float rightEye = face.getIsRightEyeOpenProbability();
                 if (Math.abs(leftEye - rightEye) >= 0.6) {
-                    saveCurrentImage(); // Take a picture
+                   // saveCurrentImage(); // Take a picture
                 }
+                saveCurrentImage();
             }
             mOverlay.add(mFaceGraphic);
             mFaceGraphic.updateFace(face);
+            
         }
 
         /**
