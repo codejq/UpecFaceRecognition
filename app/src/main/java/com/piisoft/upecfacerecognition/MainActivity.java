@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.show_authorized_User) {
-            OpenFaceTrackerActivity();
+            ShowAuthorizedUser();
             return true;
         }
 
@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void ShowAuthorizedUser(){
+        Intent intent = new Intent(MainActivity.this, EnrolledGalleryActivity.class);
+        startActivity(intent);
+     }
     private void OpenFaceTrackerActivity() {
         Intent intent = new Intent(MainActivity.this, FaceTrackerActivity.class);
         /*EditText editText = (EditText) findViewById(R.id.edit_message);

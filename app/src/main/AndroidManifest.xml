@@ -34,6 +34,14 @@
         </activity>
 
         <activity
+            android:name=".EnrolledGalleryActivity"
+            android:label="Show Authorized User"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
+
+
+        <activity
             android:name="com.piisoft.upecfacerecognition.FaceTrackerActivity"
             android:icon="@drawable/icon"
             android:label="Face Tracker"
