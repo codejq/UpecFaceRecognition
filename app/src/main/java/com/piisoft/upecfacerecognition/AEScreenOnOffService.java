@@ -54,11 +54,14 @@ public class AEScreenOnOffService extends Service {
 
 
         } else {
+            /*
             Intent intent2 = new Intent(AEScreenOnOffService.this, CameraHiddenCapture.class);
             intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent2);
+            */
             // your code here
             // Some time required to stop any service to save battery consumption
+            new CameraHiddenCapturePhoto(getBaseContext());
             Toast.makeText(getBaseContext(), "Screen on,", Toast.LENGTH_SHORT).show();
         }
     }
