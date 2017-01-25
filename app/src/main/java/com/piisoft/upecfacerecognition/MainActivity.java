@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                ShowFdActivity();
             }
         });
 
@@ -89,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, EnrolledGalleryActivity.class);
         startActivity(intent);
      }
+
+    private void ShowFdActivity(){
+        Intent intent = new Intent(MainActivity.this, FdActivity.class);
+        startActivity(intent);
+    }
+
+
     private void OpenFaceTrackerActivity() {
         Intent intent = new Intent(MainActivity.this, FaceTrackerActivity.class);
         /*EditText editText = (EditText) findViewById(R.id.edit_message);
