@@ -34,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Start AEScreenOnOffService Service
 
+        Intent service = new Intent(getApplicationContext(), AEScreenOnOffService.class);
+        getApplicationContext().startService(service);
 
     }
 

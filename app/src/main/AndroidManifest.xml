@@ -42,12 +42,40 @@
 
 
         <activity
+            android:name="com.piisoft.upecfacerecognition.CameraHiddenCapture"
+            android:icon="@drawable/icon"
+            android:label="Face Tracker"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="fullSensor">
+        </activity>
+
+        <activity
             android:name="com.piisoft.upecfacerecognition.FaceTrackerActivity"
             android:icon="@drawable/icon"
             android:label="Face Tracker"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="fullSensor">
         </activity>
+
+        <receiver android:name=".MyReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- receiver android:name=".PhoneUnlockedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver -->
+
+
+
+        <service android:name="com.piisoft.upecfacerecognition.AEScreenOnOffService">
+            <intent-filter>
+                <action android:name="com.piisoft.upecfacerecognitionAEScreenOnOffService" />
+            </intent-filter>
+        </service>
 
     </application>
 

@@ -65,6 +65,9 @@ public class extractFacesFromImage {
     private  void detectFacesInImage(String imagePath ,  String OutPutPath, Context context){
         //ImageWindow[] imageWindow = null;
         Bitmap image =  Image.bitmapFromJpg(imagePath);
+        if(image == null){
+            return;
+        }
         SparseArray<com.google.android.gms.vision.face.Face> faces = detectFaces(image,context);
         /*
         for(FaceDetector.Face fs:faces)
